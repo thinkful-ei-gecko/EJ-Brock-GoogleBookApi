@@ -4,7 +4,7 @@ export default class Search extends Component {
 
     state = {
         inputValue: '',
-        books: '',
+        books: [],
         error: null
     }
 
@@ -44,9 +44,16 @@ export default class Search extends Component {
         });
     }
 
+    printBooks = () => {
+    let allBooks = this.state.books
+    return allBooks
+}
+
     render(){
         console.log(this.state)
+        console.log(this.printBooks())
     return (
+        <section>
         <form onSubmit={e => this.submitHandler(e)}>
             <div className="search_Entry">
                 <label>Search:</label>
@@ -55,7 +62,8 @@ export default class Search extends Component {
                 <button type="submit">Search</button>
             </div>
         </form>
-    )
+        </section>
+        )
     }
 
     updateInputValue = (evt) => {
