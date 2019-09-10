@@ -29,9 +29,6 @@ class App extends Component {
         </div>
         <Search />
         <Filter />
-        <div className="all_Books">
-        
-        </div>
       </header>
     </div>
     )

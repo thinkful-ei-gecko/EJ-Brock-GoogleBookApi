@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import Result from './Result'
 export default class Search extends Component {
 
     state = {
@@ -50,20 +50,28 @@ export default class Search extends Component {
 }
 
     render(){
-        console.log(this.state)
-        console.log(this.printBooks())
+        //console.log(this.state)
+        //console.log(this.printBooks())
     return (
+        <div>
         <section>
-        <form onSubmit={e => this.submitHandler(e)}>
+            <form onSubmit={e => this.submitHandler(e)}>
             <div className="search_Entry">
                 <label>Search:</label>
                 <input placeholder="Harry Potter" type="text" value={this.state.inputValue}
                 onChange={this.updateInputValue} required></input>
                 <button type="submit">Search</button>
             </div>
-        </form>
+            </form>
         </section>
-        )
+        <section>
+            <div>
+                <Result 
+                books = {this.state.books}/>
+            </div>
+        </section>
+        </div>
+    )
     }
 
     updateInputValue = (evt) => {
@@ -71,7 +79,6 @@ export default class Search extends Component {
         this.setState({
             inputValue: evt.target.value
         })
-        console.log(this.state.inputValue);
+        //console.log(this.state.inputValue);
     }
-
 }
