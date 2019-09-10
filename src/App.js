@@ -1,26 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
 import './App.css';
+import Filter from './filters/Filter'
+import Search from './filters/Search_Entry'
 
-function App() {
+class App extends Component {
+
+  key = 'AIzaSyByEcdZDlX9IZvKTIysQwKXkYnCIoRBmCw'
+  printType = '';
+  filterType = '';
+
+  searchKey = (searchKey) => {
+    return searchKey;
+  }
+
+  searchUrl = `https://www.googleapis.com/books/v1/volumes?q=${this.searchTerms}`
+  printUrl = `https://www.googleapis.com/books/v1/volumes?q=time&printType=${this.printType}&key=${this.key}`
+  filterUrl = `https://www.googleapis.com/books/v1/volumes?q=flowers&filter=${this.filterType}&key=${this.key}`
+
+  render() {
+  console.log(this.searchUrl);
+  console.log(this.printUrl);
+  console.log(this.filterUrl);
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <div className="google_Bannner">
+          <h2>Google Book Search</h2>
+        </div>
+        <Search />
+        <Filter />
+        <div className="all_Books">
+        
+        </div>
       </header>
     </div>
-  );
+    )
+  };
 }
 
 export default App;
