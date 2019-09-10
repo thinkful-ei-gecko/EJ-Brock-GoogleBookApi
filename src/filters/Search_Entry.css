@@ -1,0 +1,30 @@
+.filterBar {
+    background-color: grey;
+    height: 40px;
+    padding-top: 20px;
+}
+
+.searching {
+    background-color: rgb(104, 103, 103);
+    height: 40px;
+    padding-top: 20px;
+}
+
+.search_Entry label {
+    margin-right: 6px;
+}
+
+.search_Entry input {
+    width: 125px;
+    margin-right: 2px;
+    text-align: center;
+    border-radius: 5px;
+    border: none;
+    height: 20px;
+}
+
+.search_Entry button {
+    width: 70px;
+    height: 17px;
+    border-radius: 5px;
+}

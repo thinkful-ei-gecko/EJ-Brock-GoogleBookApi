@@ -1,10 +1,16 @@
 import React, { Component } from 'react'
-import Result from './Result'
+import Result from './Result.js'
+import Filter from './Filter.js'
+import Bookfilter from './Bookfilter.js'
+import './Search_Entry.css'
+
 export default class Search extends Component {
 
     state = {
         inputValue: '',
         books: [],
+        filterOption: '',
+        bookOption: '',
         error: null
     }
 
@@ -14,10 +20,6 @@ export default class Search extends Component {
         const search = this.state.inputValue
         const url = `https://www.googleapis.com/books/v1/volumes?q=${search}`
         console.log(url)
-        
-        this.setState({
-            inputValue: ''
-        })
 
         this.fetch(url)
     }
@@ -47,14 +49,45 @@ export default class Search extends Component {
     printBooks = () => {
     let allBooks = this.state.books
     return allBooks
-}
+    }
+
+    changeFilterOption = (option) => {
+        this.setState({
+            bookOption: ''
+        })
+
+        return this.setState({
+            filterOption: option
+        })
+    }
+
+    changeBookOption = (option) => {
+        this.setState({
+            filterOption: ''
+        })
+
+        return this.setState({
+            bookOption: option
+        })
+    }
 
     render(){
-        //console.log(this.state)
-        //console.log(this.printBooks())
     return (
         <div>
-        <section>
+        <section className="filterBar">
+        <Filter 
+        searchTerm={this.state.inputValue}
+        fetch={this.fetch}
+        filterOption={this.state.filterOption}
+        change={this.changeFilterOption}/>
+        <Bookfilter 
+        searchTerm={this.state.inputValue}
+        fetch={this.fetch}
+        bookFilter={this.state.bookOption}
+        change={this.changeBookOption}
+        />
+        </section>
+        <section className="searching">
             <form onSubmit={e => this.submitHandler(e)}>
             <div className="search_Entry">
                 <label>Search:</label>
